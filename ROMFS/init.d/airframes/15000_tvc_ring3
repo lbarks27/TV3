@@ -1,0 +1,199 @@
+#!/bin/sh
+#
+# @name TVC Ring3 (Cube Orange+)
+#
+# @type Special Aircraft
+# @class Copter
+#
+# @maintainer TV3
+#
+# Three dual-axis thrust-vector mounts (6 servos on MAIN 1-3 and 5-7).
+# Strips stock MC apps (rate/pos/allocator/navigator); starts out-of-tree TVC.
+#
+
+. ${R}etc/init.d/rc.mc_defaults
+
+# rc.mc_defaults sets VEHICLE_TYPE=mc, which would later source rc.mc_apps
+# (control_allocator, mc_rate_control, mc_att_control, mc_pos_control,
+# flight_mode_manager, land_detector). control_allocator publishes
+# actuator_servos and would race tvc_actuators for PWM instance 0.
+# Keep copter MAV_TYPE / gyro defaults; skip rc.mc_apps.
+set VEHICLE_TYPE tvc
+
+# ---- Airframe identity ----
+param set-default MAV_TYPE 2
+param set-default SYS_AUTOCONFIG 0
+# Never leave HITL latched: SYS_HITL=1 kills real IMU + real MAIN PWM.
+param set-default SYS_HITL 0
+
+# ---- PWM map: 6 servos, no motors (tvc_actuators → actuator_servos) ----
+# CA_* is QGC/mixer identity only; control_allocator is not started.
+param set-default CA_AIRFRAME 7
+param set-default CA_ROTOR_COUNT 0
+param set-default CA_SV_CS_COUNT 6
+
+# Logical servos stay [M0a2, M0a1, M1a2, M1a1, M2a2, M2a1] = 201-206.
+# Physical harness (a2 grouped on TIM0, a1 on TIM1; MAIN 4 unused):
+#   MAIN 1 = M0 a2 (201)   MAIN 5 = M0 a1 (202)
+#   MAIN 2 = M1 a2 (203)   MAIN 6 = M1 a1 (204)
+#   MAIN 3 = M2 a2 (205)   MAIN 7 = M2 a1 (206)
+param set-default CA_SV_CS0_TYPE 1
+param set-default CA_SV_CS1_TYPE 1
+param set-default CA_SV_CS2_TYPE 1
+param set-default CA_SV_CS3_TYPE 1
+param set-default CA_SV_CS4_TYPE 1
+param set-default CA_SV_CS5_TYPE 1
+
+param set-default PWM_MAIN_FUNC1 201
+param set-default PWM_MAIN_FUNC2 203
+param set-default PWM_MAIN_FUNC3 205
+param set-default PWM_MAIN_FUNC4 0
+param set-default PWM_MAIN_FUNC5 202
+param set-default PWM_MAIN_FUNC6 204
+param set-default PWM_MAIN_FUNC7 206
+
+# a2 rest = 1500 µs. a1 rest 0° is the same midpoint (n = 0).
+param set-default PWM_MAIN_DIS1 1500
+param set-default PWM_MAIN_DIS2 1500
+param set-default PWM_MAIN_DIS3 1500
+param set-default PWM_MAIN_DIS5 1500
+param set-default PWM_MAIN_DIS6 1500
+param set-default PWM_MAIN_DIS7 1500
+param set-default PWM_MAIN_FAIL1 1500
+param set-default PWM_MAIN_FAIL2 1500
+param set-default PWM_MAIN_FAIL3 1500
+param set-default PWM_MAIN_FAIL5 1500
+param set-default PWM_MAIN_FAIL6 1500
+param set-default PWM_MAIN_FAIL7 1500
+
+# Hobby servo rate: MAIN 1-4 on TIM0, MAIN 5-8 on TIM1
+param set-default PWM_MAIN_TIM0 50
+param set-default PWM_MAIN_TIM1 50
+
+# M2 a2 horn/mount is opposite M0/M1. Bits 0..5 = M0a2 M0a1 M1a2 M1a1 M2a2 M2a1.
+# Verified 2026-08-24: 47 = 0b101111 (invert all except M2 a2).
+param set-default TVC_SERVO_REV 47
+param set-default TVC_ZERO 0
+param set-default TVC_TRIM_0 0
+param set-default TVC_TRIM_1 0
+param set-default TVC_TRIM_2 0
+param set-default TVC_TRIM_3 0
+param set-default TVC_TRIM_4 0
+param set-default TVC_TRIM_5 0
+# a2 ±45° (MAIN 1/2/3). 1500±375 µs ≈ 45° on a 90° servo.
+param set-default TVC_A2_RANGE 45
+param set-default TVC_A2_MAX 30
+param set-default TVC_A2_YAW 5
+param set-default TVC_A1_REST 0
+param set-default PWM_MAIN_MIN1 1125
+param set-default PWM_MAIN_MAX1 1875
+param set-default PWM_MAIN_MIN2 1125
+param set-default PWM_MAIN_MAX2 1875
+param set-default PWM_MAIN_MIN3 1125
+param set-default PWM_MAIN_MAX3 1875
+# Attitude: aligned G12 flight profile (roll 12/6/0.5, pitch 12/6/0.5, yaw 8/2/0.1)
+param set-default TVC_ATT_RP 12
+param set-default TVC_ATT_RD 6
+param set-default TVC_ATT_RI 0.5
+param set-default TVC_ATT_PP 12
+param set-default TVC_ATT_PD 6
+param set-default TVC_ATT_PI 0.5
+param set-default TVC_ATT_YP 8
+param set-default TVC_ATT_YD 2
+param set-default TVC_ATT_YI 0.1
+param set-default TVC_POS_P 0.4
+param set-default TVC_POS_D 8.5
+param set-default TVC_POS_TILT 10
+param set-default TVC_ALT_P 14
+param set-default TVC_ALT_D 18
+param set-default TVC_ALT_I 0.2
+param set-default TVC_BENCH 0
+
+# ---- Strip stock MC / navigator (TVC owns control + failsafes) ----
+param set-default MC_AT_EN 0
+param set-default NAV_DLL_ACT 0
+# No land_detector: disable commander auto-disarm (pad hold until liftoff).
+param set-default COM_DISARM_LAND 0
+param set-default COM_DISARM_PRFLT -1
+
+# ---- Commander / pre-arm: servo-only TVC (pattern A) ----
+# tvc_safety owns TVC gates; force-arm (TVC_FORCE_ARM) skips remaining stock checks.
+param set-default COM_ARM_CHK_ESCS 0
+param set-default COM_ARM_MIS_REQ 0
+param set-default COM_ARM_WO_GPS 1
+param set-default COM_PREARM_MODE 0
+param set-default COM_ARM_SDCARD 0
+param set-default COM_RC_IN_MODE 1
+param set-default CBRK_IO_SAFETY 22027
+# Failure detector off. These are param set, not set-default, so a value
+# already saved on the Cube cannot bring an in-flight stop back.
+param set-default FD_FAIL_P 0
+param set-default FD_FAIL_R 0
+param set TVC_AUTO_ABORT 0
+param set TVC_AXMIX_ARM -1
+param set COM_LOW_BAT_ACT 0
+param set GF_ACTION 0
+param set NAV_RCL_ACT 0
+# Saved bench leftovers. set-default will not clear these.
+param set SYS_HITL 0
+param set TVC_BENCH 0
+param set TVC_GEOFENCE_R 50
+param set SENS_BOARD_ROT 2
+
+# ---- EKF2 / HERE4 RTK ----
+param set-default EKF2_GPS_CTRL 7
+param set-default EKF2_REQ_HDRIFT 0.3
+param set-default EKF2_REQ_VDRIFT 0.5
+param set-default GPS_1_CONFIG 201
+param set-default GPS_1_PROTOCOL 1
+
+# Cube is top-side up, level with the pad. Arrow is 90° CCW from M0 looking
+# down; USB faces opposite M0. Verified closed-loop bench: YAW_90 = 2
+# (not YAW_270). Must param set if a stored 0/6 is present (set-default
+# will not override). Then re-cal accel / mag.
+# param set SENS_BOARD_ROT 2; param save; reboot.
+param set-default SENS_BOARD_ROT 2
+
+# ---- Thrust curves (SD motor*.csv; no force sensing) ----
+param set-default TVC_THR_SDCURV 1
+
+# ---- TVC params (defaults; arm uses SD vehicle.json, not TVC_MASS) ----
+# G12 flight article 2026-10-24: unloaded 2.6056 kg, loaded 3.0556 kg.
+param set-default TVC_MASS -1
+param set-default TVC_ALLOW_FIRE 0
+param set-default TVC_REQ_RTK 1
+param set-default TVC_REQ_LINK 1
+param set-default TVC_FORCE_ARM 1
+param set-default TVC_HANGFIRE_MS 800
+param set-default TVC_PART_IGN 1
+param set-default TVC_HL_Z 0.08
+param set-default TVC_HL_VZ 1.5
+param set-default TVC_BO_DEB_MS 80
+param set-default TVC_MAX_TILT 40
+param set-default TVC_MAX_RATE 250
+param set-default TVC_CTRL_HZ 100
+param set-default TVC_COM_Z 0.4699
+param set-default TVC_FORCE_W 0.65
+param set-default TVC_SLEW_DPS 300
+param set-default TVC_MIS_MODE 0
+# Cube does not ignite. Ground igniter is electrically disconnected.
+# LAUNCH_READY + first motion starts the mission. GPIO params unused.
+param set-default TVC_IGN_GPIO_EN 0
+param set-default TVC_MOT_VZ 0.4
+param set-default TVC_MOT_DZ 0.05
+param set-default TVC_MOT_AZ 2.0
+param set-default TVC_MOT_N 3
+
+# ---- Logging (pad ULog: boot until shutdown + extra topics from SD) ----
+param set-default SDLOG_MODE 2
+
+# ---- Start TVC modules ----
+# Claim actuator_servos instance 0 before rcS starts leftover PWM publishers.
+tvc_actuators start
+tvc_safety start
+tvc_thrust start
+tvc_mission start
+tvc_pos_alt start
+tvc_control start
+tvc_ignition start
+tvc_log start

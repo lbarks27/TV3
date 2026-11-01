@@ -1,0 +1,12 @@
+# TV3 extra ULog topics (interval_ms; 0 = every published sample)
+# Copied to /fs/microsd/etc/logging/logger_topics.txt by pack_vehicle_sd.py
+flight_log_vl 10
+tvc_control_debug 10
+tvc_gimbal_cmd 10
+tvc_mount_thrust 20
+tvc_setpoint 50
+tvc_force_sp 20
+tvc_attitude_sp 20
+tvc_vehicle_state 20
+tvc_inhibit_flags 50
+tvc_ignition_status 10

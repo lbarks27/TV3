@@ -1,0 +1,43 @@
+{
+  "name": "suicide_burn_g12",
+  "vehicle": "vehicles/tvc_ring3_g12_suicide.json",
+  "motion": "hover",
+  "target_position_m": [0.0, 0.0, 0.8],
+  "landing_acceptance": {
+    "center_m": [0.0, 0.0, 0.8],
+    "half_extents_m": [1.5, 1.5, 1.0],
+    "max_speed_m_s": 3.5
+  },
+  "notes": "Suicide burn with 3× AeroTech G12 (Δv≈I/m≈175 m/s, total impulse ≈438 N·s). Drop from rest 10 m east at 110 m AGL — just below the practical closed-loop soft limit (~110–112 m with 10 m east divert; upright ideal ~129 m). Motors light after 2.9 s freefall. force_max exceeds the G12 spike so the mixer keeps axial thrust near full while killing freefall; after soft capture force falls toward hover and the altitude loop settles into the pad box (~0.8 m). Altitude gains (kp=5.5, kd=19, force_min=5) trade a bit of freefall D-gain for post-capture descent authority — high kd alone hung the vehicle ~2.5 m AGL until burnout. max_tilt 8°. Success = pad box at burnout, no hard contact during burn.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 18.0,
+    "force_target": 50.0,
+    "force_weight": 1.0,
+    "actuator_slew_rate_deg_s": 500.0,
+    "initial_euler_deg": [0.0, 0.0, 0.0],
+    "initial_position_m": [10.0, 0.0, 110.0]
+  },
+  "altitude_controller": {
+    "kp": 5.5,
+    "ki": 0.0,
+    "kd": 19.0,
+    "integral_limit": 0.5,
+    "force_min": 5.0,
+    "force_max": 120.0
+  },
+  "position_controller": {
+    "kp": [0.28, 0.28, 0.0],
+    "kd": [1.0, 1.0, 0.0],
+    "max_tilt_deg": 8.0,
+    "velocity_align_kp": 0.5,
+    "velocity_aim_min_speed": 8.0
+  },
+  "controller": {
+    "kp": [7.0, 7.0, 4.5],
+    "ki": [0.0, 0.0, 0.0],
+    "kd": [1.4, 1.4, 1.1],
+    "torque_limit": 10.0,
+    "integral_limit": 2.0
+  }
+}

@@ -1,0 +1,5 @@
+menuconfig MODULES_TVC_CONTROL
+	bool "tvc_control"
+	default n
+	---help---
+		TVC attitude control + gimbal allocation at 100 Hz (Cube Orange+).

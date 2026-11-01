@@ -1,0 +1,21 @@
+# TV3 HIL bench — Cube Orange+ only (no servos)
+# Apply after airframe 15000 reboot, then: param save
+#
+# Real TV3 firmware on FC. Not Prototype SIH.
+# Desk mass gate uses unloaded estimate (2.263 kg). Pad / closed-loop
+# HIL must set loaded mass: 3×G12 → 2.713, 3×F10 → 2.476. G8 is not flight-valid.
+
+# Real-hardware bench: never leave PX4 HITL latched (it kills IMU + MAIN PWM).
+SYS_HITL	0
+TVC_MASS	2.263
+TVC_THR_NOM	12.0
+TVC_ALLOW_FIRE	0
+TVC_IGN_GPIO_EN	0
+TVC_FORCE_ARM	1
+TVC_REQ_RTK	0
+TVC_REQ_LINK	1
+TVC_GEOFENCE_R	0.0
+TVC_CTRL_HZ	100
+TVC_COM_Z	0.5329
+TVC_FORCE_W	0.25
+TVC_MIS_MODE	0

@@ -1,0 +1,6 @@
+menuconfig MODULES_TVC_MISSION
+	bool "tvc_mission"
+	default n
+	---help---
+		Solid-motor mission setpoint generator (real_landing / hover).
+		Loads /fs/microsd/tvc/mission.json when packed onto the SD card.

@@ -1,0 +1,228 @@
+{
+  "name": "tvc_ring3",
+  "notes": "Unloaded 2550 g (scale 2026-10-22, motors off). 100 g camera moved from the +X catch tip to the centerline, 0.4 m below the arm root. CoM (0.014483, 0, 0.681111) m. Inertia 1012.464, 1049.836, 62.094 g\u00b7m\u00b2. Airframe vertical CoM not remeasured. Mount mass_g 150 g matches G12 motor mass for constant-thrust hover studies; not a pad-flight config. Force/attitude up = loaded CoM unit (CoM-up stack).",
+  "center_of_mass": [
+    0.014483,
+    0.0,
+    0.681111
+  ],
+  "angle_limits_deg": {
+    "a1": [
+      0.0,
+      90.0
+    ],
+    "a2": [
+      -45.0,
+      45.0
+    ]
+  },
+  "rest_angles_deg": {
+    "a1": 0.0,
+    "a2": 0.0
+  },
+  "motor_cg": {
+    "pivot_standoff_m": 0.055,
+    "notes": "Sim plant only. CG = pivot - thrust_dir * (standoff + 0.5 * motor_length). Flight allocator composes motor mass at the gimbal pivot."
+  },
+  "mounts": [
+    {
+      "name": "M0",
+      "position": [
+        0.098,
+        0.0,
+        0.0
+      ],
+      "thrust": 12.0,
+      "base_dir": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "axis1": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis2": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "angle_limits_deg": {
+        "a1": [
+          0.0,
+          90.0
+        ],
+        "a2": [
+          -45.0,
+          45.0
+        ]
+      },
+      "rest_angles_deg": {
+        "a1": 0.0,
+        "a2": 0.0
+      },
+      "mass_g": 150.0,
+      "length_mm": 156.0
+    },
+    {
+      "name": "M1",
+      "position": [
+        -0.049,
+        0.084870489570875,
+        0.0
+      ],
+      "thrust": 12.0,
+      "base_dir": [
+        0.5,
+        -0.8660254037844387,
+        0.0
+      ],
+      "axis1": [
+        -0.8660254037844387,
+        -0.5,
+        0.0
+      ],
+      "axis2": [
+        0.5,
+        -0.8660254037844387,
+        0.0
+      ],
+      "angle_limits_deg": {
+        "a1": [
+          0.0,
+          90.0
+        ],
+        "a2": [
+          -45.0,
+          45.0
+        ]
+      },
+      "rest_angles_deg": {
+        "a1": 0.0,
+        "a2": 0.0
+      },
+      "mass_g": 150.0,
+      "length_mm": 156.0
+    },
+    {
+      "name": "M2",
+      "position": [
+        -0.049,
+        -0.084870489570875,
+        0.0
+      ],
+      "thrust": 12.0,
+      "base_dir": [
+        0.5,
+        0.8660254037844387,
+        0.0
+      ],
+      "axis1": [
+        0.8660254037844387,
+        -0.5,
+        0.0
+      ],
+      "axis2": [
+        0.5,
+        0.8660254037844387,
+        0.0
+      ],
+      "angle_limits_deg": {
+        "a1": [
+          0.0,
+          90.0
+        ],
+        "a2": [
+          -45.0,
+          45.0
+        ]
+      },
+      "rest_angles_deg": {
+        "a1": 0.0,
+        "a2": 0.0
+      },
+      "mass_g": 150.0,
+      "length_mm": 156.0
+    }
+  ],
+  "solver": {
+    "damping": 0.15,
+    "step_scale": 0.8,
+    "max_iters": 48,
+    "tol": 1e-05,
+    "finite_diff_eps": 0.0001,
+    "tracking_iters": 2,
+    "motion_damping": 0.02,
+    "reseed_interval": 20,
+    "refine_passes": 2
+  },
+  "render": {
+    "force_weight": 0.25,
+    "force_axis": [
+      0.021259,
+      0.0,
+      0.999774
+    ]
+  },
+  "vehicle": {
+    "mass_g": 2550.0,
+    "inertia_diagonal_g_m2": [
+      1012.464,
+      1049.836,
+      62.094
+    ],
+    "gravity": [
+      0.0,
+      0.0,
+      -9.81
+    ]
+  },
+  "controller": {
+    "kp": [
+      20.0,
+      20.0,
+      1.5
+    ],
+    "ki": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "kd": [
+      6.0,
+      6.0,
+      0.4
+    ],
+    "torque_limit": 15.0,
+    "integral_limit": 2.0
+  },
+  "catch_arms": [
+    {
+      "position": [
+        0.0,
+        0.0,
+        1.3081
+      ],
+      "direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "length_m": 0.5
+    },
+    {
+      "position": [
+        0.0,
+        0.0,
+        1.3081
+      ],
+      "direction": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "length_m": 0.5
+    }
+  ]
+}

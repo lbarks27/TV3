@@ -1,0 +1,53 @@
+{
+  "name": "att_step_roll",
+  "vehicle": "vehicles/tvc_ring3_tune.json",
+  "motion": "attitude",
+  "scenario": "step",
+  "notes": "Roll step +15\u00b0 at t=1 s. Torque-only mix. Flight a2 \u00b115\u00b0.",
+  "env": {
+    "step_time_s": 1.0,
+    "step_euler_deg": [
+      15.0,
+      0.0,
+      0.0
+    ],
+    "settle_tol_deg": 3.0
+  },
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 6.0,
+    "force_target": 0.0,
+    "force_weight": 0.0,
+    "thrust_per_mount": 12.0,
+    "actuator_slew_rate_deg_s": 300.0,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "controller": {
+    "kp": [
+      12.0,
+      12.0,
+      2.5
+    ],
+    "ki": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "kd": [
+      6.0,
+      6.0,
+      1.4
+    ],
+    "torque_limit": 12.0,
+    "integral_limit": 1.5
+  }
+}

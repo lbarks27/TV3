@@ -1,0 +1,129 @@
+{
+  "name": "real_landing_g12_late_turn",
+  "vehicle": "vehicles/tvc_ring3_g12.json",
+  "motion": "hover",
+  "mission": {
+    "type": "real_landing",
+    "landing_site_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "launch_offset_m": [
+      8.0,
+      0.0,
+      0.0
+    ],
+    "first_waypoint_offset_m": [
+      2.0,
+      0.0,
+      1.5
+    ],
+    "touchdown_altitude_m": -0.1919,
+    "path_end_altitude_m": 1.5,
+    "path_end_short_m": 2.0,
+    "path_hold_altitude_m": 0.0,
+    "lateral_slide_s": 0.0,
+    "slide_to_pad_z": true,
+    "vertical_hold_s": 0.0,
+    "vertical_hold_offset_m": [
+      0.0,
+      0.0,
+      30.0
+    ],
+    "capture_radius_m": 1.2,
+    "capture_max_speed_m_s": 1.0,
+    "capture_settle_s": 2.0,
+    "min_approach_time_s": 0.5,
+    "descent_duration_s": 0.0,
+    "descent_altitude_margin_m": 0.25,
+    "approach_yaw_deg": 0.0,
+    "landing_yaw_deg": 90.0,
+    "heading_slew_s": 1.0,
+    "heading_slew_start_s": null,
+    "heading_slew_end_s": null,
+    "loft_duration_s": 0.5,
+    "path_shape": "capture",
+    "path_time_law": "min_jerk",
+    "pad_transition_burn_remaining_s": 3.0,
+    "stage_capture_radius_m": 1.2
+  },
+  "engine_variance": {
+    "thrust": 0.03,
+    "burn_time": 0.03
+  },
+  "landing_acceptance": {
+    "center_m": [
+      0.0,
+      0.0,
+      -0.1919
+    ],
+    "half_extents_m": [
+      0.4,
+      0.4,
+      0.4
+    ],
+    "max_speed_m_s": 2.5
+  },
+  "notes": "Simulation candidate, not flight validated. Based on sih/logs/pass_30m_stage2m/real_landing_g12.json. Explicit 1.2 m staging radius restores the archived landing trigger; current implicit default is 0.55 m. Catch arms parallel at yaw 0 through loft and approach, then a smooth 1 s turn to yaw 90 on entry to landing. Original position and altitude gains retained.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 18.0,
+    "force_target": 24.525,
+    "force_weight": 0.65,
+    "actuator_slew_rate_deg_s": 300.0,
+    "hover_thrust_margin": 0.95,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      8.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 14.0,
+    "ki": 0.2,
+    "kd": 18.0,
+    "integral_limit": 6.0,
+    "force_min": 0.0,
+    "force_max": 70.0,
+    "throttle_min": 0.2
+  },
+  "position_controller": {
+    "kp": [
+      0.5,
+      0.28,
+      0.0
+    ],
+    "kd": [
+      10.0,
+      10.0,
+      0.0
+    ],
+    "ki": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "integral_limit": 0.05,
+    "max_tilt_deg": 12.0,
+    "max_tilt_y_deg": 5.5,
+    "max_position_error_m": 3.5,
+    "max_position_error_y_m": 0.6,
+    "max_speed_m_s": [
+      1.8,
+      0.85
+    ],
+    "integral_start_m": 1.5,
+    "lateral_accel_lpf_hz": 0.0,
+    "velocity_align_kp": 0.5,
+    "velocity_aim_min_speed": 1.8,
+    "velocity_cascade": true,
+    "lateral_priority_m": 0.05,
+    "prefer_lateral_y": true
+  }
+}

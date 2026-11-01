@@ -1,0 +1,95 @@
+{
+  "name": "real_landing_f10",
+  "vehicle": "vehicles/tvc_ring3_f10_sync.json",
+  "motion": "hover",
+  "mission": {
+    "type": "real_landing",
+    "landing_site_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "launch_offset_m": [
+      2.5,
+      0.0,
+      0.0
+    ],
+    "first_waypoint_offset_m": [
+      0.6,
+      0.0,
+      1.7
+    ],
+    "touchdown_altitude_m": 1.7,
+    "descent_duration_s": 3.8,
+    "capture_radius_m": 1.2,
+    "capture_max_speed_m_s": 1.8,
+    "capture_settle_s": 0.1,
+    "min_approach_time_s": 0.8,
+    "forced_descent_time_s": 1.4,
+    "descent_altitude_margin_m": 0.15,
+    "landing_max_tilt_deg": 2.0
+  },
+  "landing_acceptance": {
+    "center_m": [
+      0.0,
+      0.0,
+      1.7
+    ],
+    "half_extents_m": [
+      1.0,
+      1.0,
+      1.7
+    ],
+    "max_speed_m_s": 4.0
+  },
+  "notes": "Short-burn pad alternative. Unloaded 2550 g + 3×F10 → loaded 2.763 kg. Mix-arm immediately. Close XY while T is high, hold ~1.7 m with ≤2° tilt. F10 tail is a falling burnout (box max_speed 4.0 m/s). Do not command a sink.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 9.0,
+    "force_target": 23.67,
+    "force_weight": 1.0,
+    "actuator_slew_rate_deg_s": 300.0,
+    "axial_mix_arm_s": 0.0,
+    "hover_thrust_margin": 0.95,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      2.5,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 14.0,
+    "ki": 0.2,
+    "kd": 22.0,
+    "integral_limit": 2.0,
+    "force_min": 16.0,
+    "force_max": 50.0
+  },
+  "position_controller": {
+    "kp": [
+      0.32,
+      0.32,
+      0.0
+    ],
+    "kd": [
+      4.5,
+      4.5,
+      0.0
+    ],
+    "ki": [
+      0.05,
+      0.05,
+      0.0
+    ],
+    "integral_limit": 0.8,
+    "max_tilt_deg": 12.0,
+    "velocity_align_kp": 1.8,
+    "velocity_aim_min_speed": 2.0,
+    "velocity_cascade": true
+  }
+}

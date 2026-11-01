@@ -1,0 +1,6 @@
+menuconfig MODULES_TVC_IGNITION
+	bool "tvc_ignition"
+	default n
+	---help---
+		Status-only. Onboard fire GPIO is disabled; ground igniter
+		starts the grains, Cube detects first motion.

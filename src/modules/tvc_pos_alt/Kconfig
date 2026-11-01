@@ -1,0 +1,5 @@
+menuconfig MODULES_TVC_POS_ALT
+	bool "tvc_pos_alt"
+	default n
+	---help---
+		Position and altitude outer loops (50 Hz) producing attitude/force setpoints.

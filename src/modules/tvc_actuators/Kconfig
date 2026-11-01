@@ -1,0 +1,5 @@
+menuconfig MODULES_TVC_ACTUATORS
+	bool "tvc_actuators"
+	default n
+	---help---
+		Map gimbal angles to MAIN 1-6 PWM via actuator_servos.

@@ -1,0 +1,59 @@
+{
+  "name": "pad_hop_c6",
+  "vehicle": "vehicles/tvc_ring3_c6.json",
+  "motion": "hover",
+  "target_position_m": [
+    0.0,
+    0.0,
+    0.5
+  ],
+  "sih_gate": "ballistic",
+  "notes": "Pre-hop pad pop. Launch on the landing site at landing heading 90° (catch arms across world-X sticks), command (0, 0, 0.5) m. 3×Estes C6 at 2324 g: peak T/W ≈ 1.85 for ~0.1 s, avg ≈ 0.62, burn ~2 s. Spike clears ~1 cm — will not reach 0.5 m. SIH gate is ignition + upright, not hover-hold. Mix-arm 0.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 5.0,
+    "force_target": 14.0,
+    "force_weight": 1.0,
+    "actuator_slew_rate_deg_s": 300.0,
+    "axial_mix_arm_s": 0.0,
+    "hover_thrust_margin": 0.95,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      90.0
+    ],
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 12.0,
+    "ki": 0.2,
+    "kd": 10.0,
+    "integral_limit": 2.0,
+    "force_min": 0.0,
+    "force_max": 45.0
+  },
+  "position_controller": {
+    "kp": [
+      0.8,
+      0.8,
+      0.0
+    ],
+    "kd": [
+      2.5,
+      2.5,
+      0.0
+    ],
+    "ki": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "integral_limit": 0.25,
+    "max_tilt_deg": 12.0,
+    "velocity_cascade": true
+  }
+}

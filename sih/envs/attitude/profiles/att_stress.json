@@ -1,0 +1,50 @@
+{
+  "name": "att_stress",
+  "vehicle": "vehicles/tvc_ring3_tune.json",
+  "motion": "attitude",
+  "scenario": "stress",
+  "notes": "Sequential roll/pitch/yaw steps (\u00b112\u00b0) with 2 s dwell \u2014 multi-axis tracking stress.",
+  "env": {
+    "step_time_s": 1.0,
+    "stress_amp_deg": 12.0,
+    "stress_dwell_s": 2.0,
+    "settle_tol_deg": 4.0
+  },
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 16.0,
+    "force_target": 0.0,
+    "force_weight": 0.0,
+    "thrust_per_mount": 12.0,
+    "actuator_slew_rate_deg_s": 300.0,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "controller": {
+    "kp": [
+      12.0,
+      12.0,
+      2.5
+    ],
+    "ki": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "kd": [
+      6.0,
+      6.0,
+      1.4
+    ],
+    "torque_limit": 12.0,
+    "integral_limit": 1.5
+  }
+}

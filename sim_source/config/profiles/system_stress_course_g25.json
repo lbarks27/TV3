@@ -1,0 +1,56 @@
+{
+  "name": "system_stress_course_g25",
+  "vehicle": "vehicles/tvc_ring3_g25w.json",
+  "motion": "hover",
+  "waypoint_advance": "lerp",
+  "waypoints": [
+    {"position_m": [0.0, 0.0, 0.0], "t": 0.0},
+    {"position_m": [0.0, 0.0, 3.5], "t": 0.9},
+    {"position_m": [0.0, 0.0, 3.5], "t": 1.4},
+    {"position_m": [2.5, 0.0, 3.5], "t": 2.1},
+    {"position_m": [2.5, 2.0, 3.0], "t": 2.8},
+    {"position_m": [0.0, 0.0, 2.0], "t": 3.4},
+    {"position_m": [0.0, 0.0, 1.0], "t": 3.9},
+    {"position_m": [0.0, 0.0, 0.8], "t": 4.35}
+  ],
+  "landing_acceptance": {
+    "center_m": [0.0, 0.0, 0.8],
+    "half_extents_m": [3.0, 3.0, 1.5],
+    "max_speed_m_s": 8.0
+  },
+  "notes": "Stress-course shape from system_stress_course, on 3×AeroTech G25W (loaded ~3.22 kg, ~4.4 s burn, T/W≈2.1 vs G12≈1.09). Waypoints compressed into the short high-thrust burn; early home + hold altitude through burnout.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 5.0,
+    "force_target": 9.81,
+    "force_weight": 1.0,
+    "actuator_slew_rate_deg_s": 400.0,
+    "hover_thrust_margin": 1.20,
+    "initial_euler_deg": [0.0, 0.0, 0.0],
+    "initial_position_m": [0.0, 0.0, 0.0]
+  },
+  "altitude_controller": {
+    "kp": 14.0,
+    "ki": 0.15,
+    "kd": 22.0,
+    "integral_limit": 2.5,
+    "force_min": 16.0,
+    "force_max": 70.0
+  },
+  "position_controller": {
+    "kp": [0.3, 0.3, 0.0],
+    "kd": [5.5, 5.5, 0.0],
+    "ki": [0.02, 0.02, 0.0],
+    "integral_limit": 0.8,
+    "max_tilt_deg": 10.0,
+    "velocity_align_kp": 0.8,
+    "velocity_cascade": true
+  },
+  "controller": {
+    "kp": [24.0, 24.0, 1.5],
+    "ki": [0.0, 0.0, 0.0],
+    "kd": [8.0, 8.0, 0.4],
+    "torque_limit": 30.0,
+    "integral_limit": 2.0
+  }
+}

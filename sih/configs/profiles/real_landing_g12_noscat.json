@@ -1,0 +1,115 @@
+{
+  "name": "real_landing_g12_noscat",
+  "vehicle": "vehicles/tvc_ring3_g12.json",
+  "motion": "hover",
+  "mission": {
+    "type": "real_landing",
+    "landing_site_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "launch_offset_m": [
+      8.0,
+      0.0,
+      0.0
+    ],
+    "first_waypoint_offset_m": [
+      2.5,
+      0.0,
+      1.5
+    ],
+    "touchdown_altitude_m": -0.1919,
+    "path_end_altitude_m": 1.5,
+    "path_end_short_m": 2.5,
+    "path_hold_altitude_m": 0.0,
+    "lateral_slide_s": 0.0,
+    "slide_to_pad_z": true,
+    "vertical_hold_s": 0.5,
+    "capture_radius_m": 0.9,
+    "capture_max_speed_m_s": 1.35,
+    "capture_settle_s": 0.25,
+    "min_approach_time_s": 0.5,
+    "forced_descent_time_s": 12.0,
+    "descent_duration_s": 0.0,
+    "descent_altitude_margin_m": 0.25,
+    "landing_max_tilt_deg": 5.0,
+    "approach_yaw_deg": 0.0,
+    "landing_yaw_deg": 90.0,
+    "heading_slew_s": 1.5,
+    "heading_slew_start_s": 0.0,
+    "heading_slew_end_s": 1.5,
+    "loft_duration_s": 0.5,
+    "path_shape": "capture",
+    "path_time_law": "min_jerk"
+  },
+  "engine_variance": {
+    "thrust": 0.0,
+    "burn_time": 0.0
+  },
+  "landing_acceptance": {
+    "center_m": [
+      0.0,
+      0.0,
+      -0.1919
+    ],
+    "half_extents_m": [
+      0.4,
+      0.4,
+      0.4
+    ],
+    "max_speed_m_s": 2.5
+  },
+  "notes": "G12 side-in. Early yaw; soft yaw mix. 10\u00b0 approach tilt to brake/settle at gate (held until capture). 5\u00b0 pad tilt. Pad teleport. Ground contact always fails.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 18.0,
+    "force_target": 24.525,
+    "force_weight": 0.55,
+    "actuator_slew_rate_deg_s": 300.0,
+    "hover_thrust_margin": 0.92,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      8.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 16.0,
+    "ki": 0.25,
+    "kd": 22.0,
+    "integral_limit": 8.0,
+    "force_min": 0.0,
+    "force_max": 70.0,
+    "throttle_min": 0.25
+  },
+  "position_controller": {
+    "kp": [
+      1.0,
+      1.4,
+      0.0
+    ],
+    "kd": [
+      9.0,
+      11.5,
+      0.0
+    ],
+    "ki": [
+      0.0,
+      0.05,
+      0.0
+    ],
+    "integral_limit": 0.05,
+    "max_tilt_deg": 10.0,
+    "velocity_align_kp": 0.6,
+    "velocity_aim_min_speed": 1.8,
+    "velocity_cascade": true,
+    "lateral_priority_m": 0.04,
+    "prefer_lateral_y": false
+  }
+}

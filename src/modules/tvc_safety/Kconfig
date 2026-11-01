@@ -1,0 +1,5 @@
+menuconfig MODULES_TVC_SAFETY
+	bool "tvc_safety"
+	default n
+	---help---
+		TVC arming FSM, inhibit gates, commander arm request (pattern A).

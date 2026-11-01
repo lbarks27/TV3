@@ -1,0 +1,123 @@
+{
+  "name": "wp_capture_gate",
+  "vehicle": "vehicles/tvc_ring3_tune.json",
+  "motion": "hover",
+  "waypoint_advance": "lerp",
+  "waypoints": [
+    {
+      "position_m": [
+        0.0,
+        0.0,
+        5.0
+      ],
+      "t": 0.0
+    },
+    {
+      "position_m": [
+        0.0,
+        0.0,
+        5.0
+      ],
+      "t": 4.0
+    },
+    {
+      "position_m": [
+        3.0,
+        0.0,
+        5.0
+      ],
+      "t": 16.0
+    },
+    {
+      "position_m": [
+        3.0,
+        0.0,
+        5.0
+      ],
+      "t": 24.0
+    },
+    {
+      "position_m": [
+        3.0,
+        0.0,
+        2.5
+      ],
+      "t": 32.0
+    },
+    {
+      "position_m": [
+        3.0,
+        0.0,
+        2.5
+      ],
+      "t": 36.0
+    }
+  ],
+  "notes": "Gate stop lab: lerp climb, slow translate to gate, 8 s dwell, descend. Step-capture is too hot under \u00b115\u00b0 a2; settle/speed capture remains on real_landing.",
+  "env": {
+    "eval_start_s": 2.0,
+    "xy_tol_m": 0.85,
+    "z_tol_m": 0.65,
+    "path_rmse_tol_m": 1.6,
+    "velocity_cascade": true
+  },
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 40.0,
+    "force_target": 25.0,
+    "force_weight": 0.65,
+    "thrust_per_mount": 12.0,
+    "hover_thrust_margin": 0.95,
+    "actuator_slew_rate_deg_s": 300.0,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 14.0,
+    "ki": 0.2,
+    "kd": 18.0,
+    "integral_limit": 6.0,
+    "force_min": 0.0,
+    "force_max": 40.0,
+    "throttle_min": 0.15
+  },
+  "position_controller": {
+    "kp": [
+      0.55,
+      0.25,
+      0.0
+    ],
+    "kd": [
+      5.5,
+      10.0,
+      0.0
+    ],
+    "ki": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "integral_limit": 0.05,
+    "max_tilt_deg": 10.0,
+    "max_tilt_y_deg": 3.0,
+    "velocity_cascade": true,
+    "max_position_error_m": 2.5,
+    "max_position_error_y_m": 0.6,
+    "max_speed_m_s": [
+      2.8,
+      0.8
+    ],
+    "integral_start_m": 1.2,
+    "lateral_accel_lpf_hz": 1.0,
+    "lateral_priority_m": 0.05,
+    "prefer_lateral_y": false
+  }
+}

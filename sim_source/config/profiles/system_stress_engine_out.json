@@ -1,0 +1,52 @@
+{
+  "name": "system_stress_engine_out",
+  "vehicle": "vehicles/tvc_ring3_engine_out.json",
+  "motion": "hover",
+  "waypoint_advance": "lerp",
+  "waypoints": [
+    {"position_m": [0.0, 0.0, 0.0], "t": 0.0},
+    {"position_m": [0.0, 0.0, 10.0], "t": 4.0},
+    {"position_m": [0.0, 0.0, 10.0], "t": 5.0},
+    {"position_m": [7.0, 0.0, 10.0], "t": 9.0},
+    {"position_m": [7.0, 7.0, 5.5], "t": 12.5},
+    {"position_m": [0.0, 7.0, 12.0], "t": 16.0},
+    {"position_m": [0.0, 0.0, 7.0], "t": 18.5},
+    {"position_m": [0.0, 0.0, 2.0], "t": 21.0},
+    {"position_m": [0.0, 0.0, 0.5], "t": 23.0}
+  ],
+  "landing_acceptance": {
+    "center_m": [0.0, 0.0, 0.5],
+    "half_extents_m": [3.0, 3.0, 1.5],
+    "max_speed_m_s": 4.0
+  },
+  "notes": "System stress course with engine-out: M0=0 N, M1/M2=12 N, mass=1.3 kg. Same aggressive lerp path (climb, lateral box, dive+corner, reverse climb, pad descent) as system_stress_course. Mixer torque-feasible a1 clamp under imbalance; ±45° a2; EO-tuned gains (tilt 20°, force floor-aware).",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 25.0,
+    "force_target": 12.75,
+    "force_weight": 0.85,
+    "actuator_slew_rate_deg_s": 350.0,
+    "initial_euler_deg": [0.0, 0.0, 0.0],
+    "initial_position_m": [0.0, 0.0, 0.0]
+  },
+  "altitude_controller": {
+    "kp": 11.0,
+    "ki": 0.08,
+    "kd": 13.0,
+    "integral_limit": 1.5,
+    "force_min": 8.0,
+    "force_max": 22.0
+  },
+  "position_controller": {
+    "kp": [1.0, 1.0, 0.0],
+    "kd": [1.6, 1.6, 0.0],
+    "max_tilt_deg": 20.0
+  },
+  "controller": {
+    "kp": [5.5, 5.5, 3.2],
+    "ki": [0.0, 0.0, 0.0],
+    "kd": [1.2, 1.2, 0.8],
+    "torque_limit": 10.0,
+    "integral_limit": 2.0
+  }
+}

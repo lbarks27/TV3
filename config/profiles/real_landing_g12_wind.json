@@ -1,0 +1,137 @@
+{
+  "name": "real_landing_g12_wind",
+  "vehicle": "vehicles/tvc_ring3_g12.json",
+  "motion": "hover",
+  "mission": {
+    "type": "real_landing",
+    "landing_site_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "launch_offset_m": [
+      8.0,
+      0.0,
+      0.0
+    ],
+    "first_waypoint_offset_m": [
+      2.0,
+      0.0,
+      1.5
+    ],
+    "touchdown_altitude_m": -0.1919,
+    "path_end_altitude_m": 1.5,
+    "path_end_short_m": 2.0,
+    "path_hold_altitude_m": 0.0,
+    "lateral_slide_s": 0.0,
+    "slide_to_pad_z": true,
+    "vertical_hold_s": 0.0,
+    "vertical_hold_offset_m": [
+      0.0,
+      0.0,
+      30.0
+    ],
+    "capture_radius_m": 1.2,
+    "capture_max_speed_m_s": 1.0,
+    "capture_settle_s": 2.0,
+    "min_approach_time_s": 0.5,
+    "descent_duration_s": 0.0,
+    "descent_altitude_margin_m": 0.25,
+    "approach_yaw_deg": 90.0,
+    "landing_yaw_deg": 90.0,
+    "heading_slew_s": 1.0,
+    "heading_slew_start_s": 0.0,
+    "heading_slew_end_s": 1.0,
+    "loft_duration_s": 0.5,
+    "landing_max_tilt_deg": 7.0,
+    "path_shape": "capture",
+    "path_time_law": "min_jerk",
+    "pad_transition_burn_remaining_s": 3.0
+  },
+  "landing_acceptance": {
+    "center_m": [
+      0.0,
+      0.0,
+      -0.1919
+    ],
+    "half_extents_m": [
+      0.4,
+      0.4,
+      0.4
+    ],
+    "max_speed_m_s": 2.5
+  },
+  "notes": "Wind twin of the post-pass lateral tighten. X kp0.42/kd9.5 tilt11 vx1.3; Y kp0.22/kd12 ki0.02 tilt5.0 vy0.70 lpf3. Stage pad+2 m X / 1.5 m. landing_max_tilt 7.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 18.0,
+    "force_target": 24.525,
+    "force_weight": 0.65,
+    "actuator_slew_rate_deg_s": 300.0,
+    "hover_thrust_margin": 0.95,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      90.0
+    ],
+    "initial_position_m": [
+      8.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 14.0,
+    "ki": 0.2,
+    "kd": 18.0,
+    "integral_limit": 6.0,
+    "force_min": 0.0,
+    "force_max": 70.0,
+    "throttle_min": 0.2
+  },
+  "position_controller": {
+    "kp": [
+      0.42,
+      0.22,
+      0.0
+    ],
+    "kd": [
+      9.5,
+      12.0,
+      0.0
+    ],
+    "ki": [
+      0.0,
+      0.02,
+      0.0
+    ],
+    "integral_limit": 0.04,
+    "max_tilt_deg": 11.0,
+    "max_tilt_y_deg": 5.0,
+    "max_position_error_m": 3.0,
+    "max_position_error_y_m": 0.5,
+    "max_speed_m_s": [
+      1.3,
+      0.7
+    ],
+    "integral_start_m": 2.5,
+    "lateral_accel_lpf_hz": 3.0,
+    "velocity_align_kp": 0.5,
+    "velocity_aim_min_speed": 1.8,
+    "velocity_cascade": true,
+    "lateral_priority_m": 0.05,
+    "prefer_lateral_y": true
+  },
+  "wind": {
+    "velocity_m_s": [
+      0.0,
+      0.5,
+      0.0
+    ],
+    "gust_std_m_s": 0.2,
+    "gust_tau_s": 2.0,
+    "drag_coeff": 1.0,
+    "ref_area_m2": 0.12,
+    "seed": 1
+  }
+}

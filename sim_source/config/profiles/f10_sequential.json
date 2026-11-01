@@ -1,0 +1,15 @@
+{
+  "name": "f10_sequential",
+  "vehicle": "vehicles/tvc_ring3_f10.json",
+  "motion": "attitude",
+  "scenario": "hold",
+  "notes": "Apogee F10 motors ignited at 0.0 / 0.5 / 1.0 s with upright attitude hold.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 10.0,
+    "force_target": 0.0,
+    "force_weight": 0.0,
+    "initial_euler_deg": [0.0, 0.0, 0.0],
+    "initial_position_m": [0.0, 0.0, 0.0]
+  }
+}

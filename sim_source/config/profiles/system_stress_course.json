@@ -1,0 +1,56 @@
+{
+  "name": "system_stress_course",
+  "vehicle": "vehicles/tvc_ring3_g12.json",
+  "motion": "hover",
+  "waypoint_advance": "lerp",
+  "waypoints": [
+    {"position_m": [0.0, 0.0, 0.0], "t": 0.0},
+    {"position_m": [0.0, 0.0, 4.0], "t": 2.2},
+    {"position_m": [0.0, 0.0, 4.0], "t": 3.5},
+    {"position_m": [3.0, 0.0, 4.0], "t": 5.5},
+    {"position_m": [3.0, 2.5, 3.5], "t": 7.5},
+    {"position_m": [0.0, 0.0, 3.5], "t": 9.5},
+    {"position_m": [0.0, 0.0, 1.5], "t": 11.0},
+    {"position_m": [0.0, 0.0, 0.5], "t": 12.5}
+  ],
+  "landing_acceptance": {
+    "center_m": [0.0, 0.0, 0.5],
+    "half_extents_m": [2.5, 2.5, 1.2],
+    "max_speed_m_s": 3.5
+  },
+  "notes": "Whole-stack stress course on 3×G12 under loaded mass (~3.16 kg). Track compressed into the ~12.6 s burn: climb, hold, lateral L, early home, pad descent. hover_thrust_margin <1 leaves headroom for XY tilt; altitude force floor keeps vertical thrust during the box. Stresses moving-ref + velocity feedforward, altitude force mix, attitude near tilt limit, allocator, slew, and pad acceptance.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 13.0,
+    "force_target": 9.81,
+    "force_weight": 1.0,
+    "actuator_slew_rate_deg_s": 450.0,
+    "hover_thrust_margin": 0.86,
+    "initial_euler_deg": [0.0, 0.0, 0.0],
+    "initial_position_m": [0.0, 0.0, 0.0]
+  },
+  "altitude_controller": {
+    "kp": 24.0,
+    "ki": 0.25,
+    "kd": 30.0,
+    "integral_limit": 3.0,
+    "force_min": 26.0,
+    "force_max": 62.0
+  },
+  "position_controller": {
+    "kp": [0.38, 0.38, 0.0],
+    "kd": [4.6, 4.6, 0.0],
+    "ki": [0.04, 0.04, 0.0],
+    "integral_limit": 1.0,
+    "max_tilt_deg": 9.0,
+    "velocity_align_kp": 0.9,
+    "velocity_cascade": true
+  },
+  "controller": {
+    "kp": [20.0, 20.0, 1.2],
+    "ki": [0.0, 0.0, 0.0],
+    "kd": [6.5, 6.5, 0.35],
+    "torque_limit": 14.0,
+    "integral_limit": 2.0
+  }
+}

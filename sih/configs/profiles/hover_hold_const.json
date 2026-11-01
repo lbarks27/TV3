@@ -1,0 +1,31 @@
+{
+  "name": "hover_hold_const",
+  "vehicle": "vehicles/tvc_ring3_const.json",
+  "motion": "hover",
+  "target_position_m": [0.0, 0.0, 5.0],
+  "notes": "SIH control smoke only (constant thrust, ~1.9 kg). Not a flight-mass / T/W gate — use real_landing_g12 or real_landing_f10 for pad validation.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 12.0,
+    "force_target": 18.0,
+    "force_weight": 1.0,
+    "actuator_slew_rate_deg_s": 300.0,
+    "initial_position_m": [0.0, 0.0, 0.0]
+  },
+  "altitude_controller": {
+    "kp": 14.0,
+    "ki": 0.2,
+    "kd": 10.0,
+    "integral_limit": 2.0,
+    "force_min": 0.0,
+    "force_max": 40.0
+  },
+  "position_controller": {
+    "kp": [1.2, 1.2, 0.0],
+    "kd": [2.5, 2.5, 0.0],
+    "ki": [0.2, 0.2, 0.0],
+    "integral_limit": 1.0,
+    "max_tilt_deg": 30.0,
+    "velocity_cascade": true
+  }
+}

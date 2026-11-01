@@ -1,0 +1,8 @@
+# last known-good Cube Orange+ TV3 firmware
+# FLASH is ~98% full — rebuilds can fail silently; do not flash a mystery rebuild
+# recorded_utc=2026-10-23T02:24:22Z
+# px4_size=1839556
+# bin_size=1956888
+# bin_sha256=21ba60f63cd30655018cd53272246804678c738ded918acf9ca2c08a17cee24d
+# FLASH=1956888/1966080 (99.53%)
+e1f42b474c4ebfb0c8225e8e1bec391f62ddd01486d03cd62d39a40b7469975c  cubepilot_cubeorangeplus_default.px4

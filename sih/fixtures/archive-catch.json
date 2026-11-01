@@ -1,0 +1,54 @@
+{
+  "profile": "real_landing_g12",
+  "control_stack": "tvc_core",
+  "mass_kg": 2.6500000000000004,
+  "unloaded_mass_g": 2200.0,
+  "extra_mass_g": 0.0,
+  "tw_peak": 3.5310832570235156,
+  "tw_avg": 1.2932821125950769,
+  "com_m": [
+    0.02830196226415095,
+    0.0,
+    0.5784729811320753
+  ],
+  "engine_draws": [
+    {
+      "thrust_scale": 0.984568407568212,
+      "time_scale": 0.9835207441265515,
+      "ignition_delay_s": 0.0
+    },
+    {
+      "thrust_scale": 0.9716399786292347,
+      "time_scale": 0.9883722161753161,
+      "ignition_delay_s": 0.0
+    },
+    {
+      "thrust_scale": 1.016453721678585,
+      "time_scale": 1.0155017056031272,
+      "ignition_delay_s": 0.0
+    }
+  ],
+  "safe_land": false,
+  "duration_s": 18.0,
+  "samples": 1801,
+  "z_max_m": 30.734757631979267,
+  "final_pos_m": [
+    -0.5527497960347467,
+    -0.02986868290454172,
+    0.09963016973222602
+  ],
+  "landing": {
+    "evaluated": true,
+    "success": true,
+    "reason": "caught",
+    "burnout_time_s": 12.770000000000001,
+    "burnout_position_m": [
+      -0.5527497960347467,
+      -0.02986868290454172,
+      0.09963016973222602
+    ],
+    "burnout_speed_m_s": 0.0
+  },
+  "log": "sih/logs/real_landing_g12.csv",
+  "summary": "scenario=real_landing_g12 | mode=hover | samples=1801 | pos m=(-0.55, -0.03, 0.10) | pos err m=(0.55, 0.03, -0.29) | attitude deg=(10.18, -0.04, 93.88) | att err deg=(0.00, 0.00, 0.00) | max |tau_cmd|=2.118 N*m | saturated_steps=371 | landing=SUCCESS @ burnout t=12.77s pos=(-0.5527497960347467,-0.02986868290454172,0.09963016973222602) |v|=0.00 m/s | chopsticks=caught heading=ok"
+}

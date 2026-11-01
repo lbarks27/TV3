@@ -1,0 +1,103 @@
+{
+  "name": "real_landing_f10",
+  "vehicle": "vehicles/tvc_ring3_f10_sync.json",
+  "motion": "hover",
+  "mission": {
+    "type": "real_landing",
+    "landing_site_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "launch_offset_m": [
+      16.0,
+      0.0,
+      0.0
+    ],
+    "first_waypoint_offset_m": [
+      8.0,
+      0.0,
+      9.0
+    ],
+    "touchdown_altitude_m": 0.7,
+    "path_end_altitude_m": 0.5,
+    "descent_duration_s": 4.0,
+    "capture_radius_m": 1.5,
+    "capture_max_speed_m_s": 1.8,
+    "capture_settle_s": 0.1,
+    "min_approach_time_s": 1.0,
+    "forced_descent_time_s": 1.0,
+    "descent_altitude_margin_m": 0.15,
+    "landing_max_tilt_deg": 3.0,
+    "approach_yaw_deg": 0.0,
+    "landing_yaw_deg": 90.0,
+    "heading_slew_start_s": 2.0,
+    "heading_slew_end_s": 3.0,
+    "path_shape": "continuous",
+    "path_time_law": "projectile",
+    "path_end_short_m": 0.0
+  },
+  "landing_acceptance": {
+    "center_m": [
+      0.0,
+      0.0,
+      0.7
+    ],
+    "half_extents_m": [
+      0.5,
+      0.5,
+      0.80
+    ],
+    "max_speed_m_s": 4.5
+  },
+  "notes": "Loaded F10 on the G12 waypoint geometry: launch 16 m east, gate (8, 0, 9) m, parabola bottoms at the landing site (0, 0, 0.5) m. Yaw 0\u00b0\u219290\u00b0 from t=2\u20133 s.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 16.0,
+    "force_target": 9.81,
+    "force_weight": 1.0,
+    "actuator_slew_rate_deg_s": 500.0,
+    "axial_mix_arm_s": 0.0,
+    "hover_thrust_margin": 0.98,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      16.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 14.0,
+    "ki": 0.2,
+    "kd": 24.0,
+    "integral_limit": 2.0,
+    "force_min": 18.0,
+    "force_max": 36.0
+  },
+  "position_controller": {
+    "kp": [
+      0.7,
+      0.7,
+      0.0
+    ],
+    "kd": [
+      4.0,
+      4.0,
+      0.0
+    ],
+    "ki": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "integral_limit": 0.8,
+    "max_tilt_deg": 10.0,
+    "velocity_align_kp": 0.5,
+    "velocity_aim_min_speed": 2.0,
+    "velocity_cascade": true
+  }
+}

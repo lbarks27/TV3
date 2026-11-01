@@ -1,0 +1,91 @@
+{
+  "name": "real_landing_g8",
+  "vehicle": "vehicles/tvc_ring3_g8.json",
+  "motion": "hover",
+  "mission": {
+    "type": "real_landing",
+    "landing_site_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "launch_offset_m": [
+      10.0,
+      0.0,
+      0.0
+    ],
+    "first_waypoint_offset_m": [
+      5.0,
+      0.0,
+      5.0
+    ],
+    "touchdown_altitude_m": 0.5,
+    "descent_duration_s": 7.0,
+    "capture_radius_m": 0.45,
+    "capture_max_speed_m_s": 0.7,
+    "capture_settle_s": 0.25,
+    "min_approach_time_s": 4.0,
+    "descent_altitude_margin_m": 0.5
+  },
+  "landing_acceptance": {
+    "center_m": [
+      0.0,
+      0.0,
+      0.5
+    ],
+    "half_extents_m": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "max_speed_m_s": 2.0
+  },
+  "notes": "Historical G8 pad shape only — not flight-valid. Estimated 2263 g + 3×G8 → T/W ≈ 0.88. Do not use for pad ops; use real_landing_g12 or real_landing_f10.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 30.0,
+    "force_target": 9.81,
+    "force_weight": 1.0,
+    "actuator_slew_rate_deg_s": 300.0,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      10.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 14.0,
+    "ki": 0.15,
+    "kd": 11.0,
+    "integral_limit": 1.5,
+    "force_min": 3.0,
+    "force_max": 22.0
+  },
+  "position_controller": {
+    "kp": [
+      1.25,
+      1.25,
+      0.0
+    ],
+    "kd": [
+      2.8,
+      2.8,
+      0.0
+    ],
+    "ki": [
+      0.35,
+      0.35,
+      0.0
+    ],
+    "integral_limit": 1.2,
+    "max_tilt_deg": 35.0,
+    "velocity_align_kp": 2.0,
+    "velocity_aim_min_speed": 2.0,
+    "velocity_cascade": true
+  }
+}

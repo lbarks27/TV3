@@ -1,0 +1,13 @@
+set(config_msg_list_external
+	tvc_vehicle_state.msg
+	tvc_inhibit_flags.msg
+	tvc_setpoint.msg
+	tvc_attitude_sp.msg
+	tvc_force_sp.msg
+	tvc_mount_thrust.msg
+	tvc_gimbal_cmd.msg
+	tvc_control_debug.msg
+	tvc_ignition_status.msg
+	flight_log_vl.msg
+	PARENT_SCOPE
+)

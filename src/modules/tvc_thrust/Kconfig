@@ -1,0 +1,5 @@
+menuconfig MODULES_TVC_THRUST
+	bool "tvc_thrust"
+	default n
+	---help---
+		Motor curve thrust publisher for 3 mounts (SD CSV + trapezoid).

@@ -1,0 +1,48 @@
+{
+  "name": "hover_10m_g12_g8_mix",
+  "vehicle": "vehicles/tvc_ring3_g12_g8_mix.json",
+  "motion": "hover",
+  "target_position_m": [
+    5.0,
+    5.0,
+    10.0
+  ],
+  "notes": "Simple hover to (5,5,10) with mixed solid motors: M0=G12 (~12.6 s), M1/M2=G8 (~20 s). Asymmetric thrust until G12 burnout; two G8s remain for residual hold.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 25.0,
+    "force_target": 9.81,
+    "force_weight": 1.0,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 12.0,
+    "ki": 0.1,
+    "kd": 10.5,
+    "integral_limit": 1.5,
+    "force_min": 3.0,
+    "force_max": 36.0
+  },
+  "position_controller": {
+    "kp": [
+      1.3,
+      1.3,
+      0.0
+    ],
+    "kd": [
+      1.6,
+      1.6,
+      0.0
+    ],
+    "max_tilt_deg": 28.0
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "name": "hover_land_wp",
+  "vehicle": "vehicles/tvc_ring3.json",
+  "motion": "hover",
+  "waypoints": [
+    {
+      "position_m": [
+        0.0,
+        0.0,
+        10.0
+      ],
+      "t": 0.0
+    },
+    {
+      "position_m": [
+        3.0,
+        0.0,
+        10.0
+      ],
+      "t": 5.0
+    },
+    {
+      "position_m": [
+        3.0,
+        0.0,
+        5.0
+      ],
+      "t": 9.0
+    },
+    {
+      "position_m": [
+        3.0,
+        0.0,
+        2.0
+      ],
+      "t": 13.0
+    },
+    {
+      "position_m": [
+        3.0,
+        0.0,
+        0.5
+      ],
+      "t": 16.5
+    },
+    {
+      "position_m": [
+        3.0,
+        0.0,
+        0.0
+      ],
+      "t": 19.0
+    }
+  ],
+  "notes": "Climb, translate over pad, staged descent to z=0. Altitude PD-heavy / low-I to cut overshoot; snappier XY tilt.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 26.0,
+    "force_target": 9.81,
+    "force_weight": 0.25,
+    "thrust_per_mount": 12.0,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 12.0,
+    "ki": 0.2,
+    "kd": 10.5,
+    "integral_limit": 3.0,
+    "force_min": 0.0,
+    "force_max": 36.0
+  },
+  "position_controller": {
+    "kp": [
+      1.2,
+      1.2,
+      0.0
+    ],
+    "kd": [
+      1.8,
+      1.8,
+      0.0
+    ],
+    "max_tilt_deg": 18.0
+  }
+}

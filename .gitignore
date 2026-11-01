@@ -1,0 +1,34 @@
+# Build
+build/
+**/build/
+*.o
+*.a
+*.so
+*.dylib
+*.px4
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+.mplconfig/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Logs
+*.ulg
+flight_logs/
+*.csv.bak
+sih/logs/_resolved_*.json
+sih/logs/last_result.json
+
+# Local PX4 / worktrees (not part of this repo)
+.work/
+
+# Generated simulation runs
+sih/logs/

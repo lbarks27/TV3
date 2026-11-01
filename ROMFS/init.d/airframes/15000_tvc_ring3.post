@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# Post-start: rcS always starts navigator, and board/defaults may still
+# launch MC apps. Stop anything that would compete with tvc_actuators
+# on actuator_servos or feed stock setpoints.
+#
+
+control_allocator stop
+mc_rate_control stop
+mc_att_control stop
+mc_autotune_attitude_control stop
+mc_hover_thrust_estimator stop
+flight_mode_manager stop
+mc_pos_control stop
+land_detector stop
+navigator stop

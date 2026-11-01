@@ -1,0 +1,93 @@
+{
+  "name": "real_landing_g12_west",
+  "vehicle": "vehicles/tvc_ring3_g12.json",
+  "motion": "hover",
+  "mission": {
+    "type": "real_landing",
+    "landing_site_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "launch_offset_m": [
+      -10.0,
+      0.0,
+      0.0
+    ],
+    "first_waypoint_offset_m": [
+      5.0,
+      0.0,
+      15.0
+    ],
+    "touchdown_altitude_m": 0.8,
+    "descent_duration_s": 8.0,
+    "capture_radius_m": 0.55,
+    "capture_max_speed_m_s": 0.9,
+    "capture_settle_s": 0.2,
+    "min_approach_time_s": 3.0,
+    "descent_altitude_margin_m": 1.0,
+    "approach_yaw_deg": 0.0,
+    "landing_yaw_deg": 180.0
+  },
+  "landing_acceptance": {
+    "center_m": [
+      0.0,
+      0.0,
+      0.6
+    ],
+    "half_extents_m": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "max_speed_m_s": 3.0
+  },
+  "notes": "AeroTech G12 soft pad landing at 2.5 kg: launch 10 m west of pad \u2192 settle first WP 5 m east / 15 m up \u2192 ease-out on nominal WP\u2192pad path with linear 0\u2192180\u00b0 yaw slew. Hard ground contact fails the mission.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 16.0,
+    "force_target": 24.525,
+    "force_weight": 1.0,
+    "actuator_slew_rate_deg_s": 500.0,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      -10.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 24.0,
+    "ki": 0.2,
+    "kd": 14.0,
+    "integral_limit": 2.5,
+    "force_min": 6.0,
+    "force_max": 50.0
+  },
+  "position_controller": {
+    "kp": [
+      1.2,
+      1.2,
+      0.0
+    ],
+    "kd": [
+      3.2,
+      3.2,
+      0.0
+    ],
+    "ki": [
+      0.35,
+      0.35,
+      0.0
+    ],
+    "integral_limit": 1.5,
+    "max_tilt_deg": 32.0,
+    "velocity_align_kp": 1.8,
+    "velocity_aim_min_speed": 2.0,
+    "velocity_cascade": true
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "low_thrust_m0_two_wp",
+  "vehicle": "vehicles/tvc_ring3_low_m0.json",
+  "motion": "hover",
+  "waypoints": [
+    {"position_m": [0.0, 0.0, 10.0], "t": 0.0},
+    {"position_m": [5.0, 5.0, 10.0], "t": 12.0}
+  ],
+  "notes": "Low-thrust-on-one-side: M0 at 6 N (50%), M1/M2 at 12 N. Same two-WP hover as baseline. Tests mixer bias-torque cancel under continuous thrust imbalance with ±45° a2. No thrust_per_mount so asymmetry is preserved.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 28.0,
+    "force_target": 9.81,
+    "force_weight": 1.0,
+    "actuator_slew_rate_deg_s": 300.0,
+    "initial_euler_deg": [0.0, 0.0, 0.0],
+    "initial_position_m": [0.0, 0.0, 0.0]
+  },
+  "altitude_controller": {
+    "kp": 12.0,
+    "ki": 0.15,
+    "kd": 10.5,
+    "integral_limit": 2.0,
+    "force_min": 0.0,
+    "force_max": 26.0
+  },
+  "position_controller": {
+    "kp": [1.5, 1.5, 0.0],
+    "kd": [1.8, 1.8, 0.0],
+    "max_tilt_deg": 28.0
+  },
+  "controller": {
+    "kp": [4.5, 4.5, 2.8],
+    "ki": [0.0, 0.0, 0.0],
+    "kd": [0.9, 0.9, 0.5],
+    "torque_limit": 8.0,
+    "integral_limit": 2.0
+  }
+}

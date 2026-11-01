@@ -1,0 +1,5 @@
+menuconfig MODULES_TVC_LOG
+	bool "tvc_log"
+	default n
+	---help---
+		Publish flight_log_vl at 100 Hz for onboard ULog (flight_log_v1).

@@ -1,0 +1,227 @@
+{
+  "name": "tvc_ring3_g12",
+  "notes": "Flight candidate. Unloaded 2263 g. a2 \u00b145\u00b0. Mixer: yaw_torque_weight 0.5 (heading last vs pitch/roll); roll full. Attitude yaw firmer (kp 4 / kd 2.5) so heading holds under large tilt.",
+  "center_of_mass": [
+    0.0,
+    0.0,
+    0.5329
+  ],
+  "angle_limits_deg": {
+    "a1": [
+      0.0,
+      90.0
+    ],
+    "a2": [
+      -45,
+      45
+    ]
+  },
+  "rest_angles_deg": {
+    "a1": 0.0,
+    "a2": 0.0
+  },
+  "motor_cg": {
+    "pivot_standoff_m": 0.055,
+    "notes": "Sim plant only. CG = pivot - thrust_dir * (standoff + 0.5 * motor_length). Flight allocator composes motor mass at the gimbal pivot."
+  },
+  "engine": {
+    "manufacturer": "AeroTech",
+    "designation": "G12",
+    "ignition_delay_s": 0.0,
+    "mass_g": 150.0
+  },
+  "mounts": [
+    {
+      "name": "M0",
+      "position": [
+        0.098,
+        0.0,
+        0.0
+      ],
+      "base_dir": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "axis1": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis2": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "angle_limits_deg": {
+        "a1": [
+          0.0,
+          90.0
+        ],
+        "a2": [
+          -45,
+          45
+        ]
+      },
+      "rest_angles_deg": {
+        "a1": 0.0,
+        "a2": 0.0
+      }
+    },
+    {
+      "name": "M1",
+      "position": [
+        -0.049,
+        0.084870489570875,
+        0.0
+      ],
+      "base_dir": [
+        0.5,
+        -0.8660254037844387,
+        0.0
+      ],
+      "axis1": [
+        -0.8660254037844387,
+        -0.5,
+        0.0
+      ],
+      "axis2": [
+        0.5,
+        -0.8660254037844387,
+        0.0
+      ],
+      "angle_limits_deg": {
+        "a1": [
+          0.0,
+          90.0
+        ],
+        "a2": [
+          -45,
+          45
+        ]
+      },
+      "rest_angles_deg": {
+        "a1": 0.0,
+        "a2": 0.0
+      }
+    },
+    {
+      "name": "M2",
+      "position": [
+        -0.049,
+        -0.084870489570875,
+        0.0
+      ],
+      "base_dir": [
+        0.5,
+        0.8660254037844387,
+        0.0
+      ],
+      "axis1": [
+        0.8660254037844387,
+        -0.5,
+        0.0
+      ],
+      "axis2": [
+        0.5,
+        0.8660254037844387,
+        0.0
+      ],
+      "angle_limits_deg": {
+        "a1": [
+          0.0,
+          90.0
+        ],
+        "a2": [
+          -45,
+          45
+        ]
+      },
+      "rest_angles_deg": {
+        "a1": 0.0,
+        "a2": 0.0
+      }
+    }
+  ],
+  "solver": {
+    "damping": 0.15,
+    "step_scale": 0.8,
+    "max_iters": 48,
+    "tol": 1e-05,
+    "finite_diff_eps": 0.0001,
+    "tracking_iters": 2,
+    "motion_damping": 0.02,
+    "reseed_interval": 20,
+    "refine_passes": 2,
+    "yaw_torque_weight": 0.25,
+    "roll_torque_weight": 0.7
+  },
+  "render": {
+    "force_weight": 1.0,
+    "force_axis": [
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  "vehicle": {
+    "mass_g": 2263.0,
+    "inertia_diagonal_g_m2": [
+      1045.25,
+      1045.25,
+      27.73
+    ],
+    "gravity": [
+      0.0,
+      0.0,
+      -9.81
+    ]
+  },
+  "controller": {
+    "kp": [
+      12,
+      12,
+      2.5
+    ],
+    "ki": [
+      0,
+      0,
+      0
+    ],
+    "kd": [
+      6,
+      6,
+      1.4
+    ],
+    "torque_limit": 15,
+    "integral_limit": 2
+  },
+  "catch_arms": [
+    {
+      "position": [
+        0.0,
+        0.0,
+        1.3081
+      ],
+      "direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "length_m": 0.5
+    },
+    {
+      "position": [
+        0.0,
+        0.0,
+        1.3081
+      ],
+      "direction": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "length_m": 0.5
+    }
+  ]
+}

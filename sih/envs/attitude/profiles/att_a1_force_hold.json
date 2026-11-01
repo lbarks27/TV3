@@ -1,0 +1,37 @@
+{
+  "name": "att_a1_force_hold",
+  "vehicle": "vehicles/tvc_ring3_tune.json",
+  "motion": "attitude",
+  "scenario": "hold",
+  "notes": "Upright hold while axial force steps through a1 fold angles (hover→high). Verifies a2 attitude authority across collective a1. a2 ±15°.",
+  "env": {
+    "hold_euler_deg": [0.0, 0.0, 0.0],
+    "eval_start_s": 1.0,
+    "settle_tol_deg": 3.0,
+    "rmse_tol_deg": 2.5,
+    "force_schedule": [
+      {"t": 0.0, "force_n": 25.0},
+      {"t": 2.0, "force_n": 45.0},
+      {"t": 4.0, "force_n": 15.0},
+      {"t": 6.0, "force_n": 35.0}
+    ]
+  },
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 8.0,
+    "force_target": 25.0,
+    "force_weight": 0.70,
+    "thrust_per_mount": 12.0,
+    "hover_thrust_margin": 0.95,
+    "actuator_slew_rate_deg_s": 300.0,
+    "initial_euler_deg": [0.0, 0.0, 0.0],
+    "initial_position_m": [0.0, 0.0, 0.0]
+  },
+  "controller": {
+    "kp": [12.0, 12.0, 2.5],
+    "ki": [0.0, 0.0, 0.0],
+    "kd": [6.0, 6.0, 1.4],
+    "torque_limit": 12.0,
+    "integral_limit": 1.5
+  }
+}

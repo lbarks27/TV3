@@ -1,0 +1,49 @@
+{
+  "name": "legacy_example",
+  "notes": "Prefer config/vehicles + config/profiles. This redirects to the 10 m hover profile.",
+  "vehicle": "config/vehicles/tvc_ring3.json",
+  "motion": "hover",
+  "target_position_m": [
+    0.0,
+    0.0,
+    10.0
+  ],
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 20.0,
+    "force_target": 9.81,
+    "force_weight": 0.25,
+    "thrust_per_mount": 12.0,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 8.0,
+    "ki": 1.0,
+    "kd": 6.0,
+    "integral_limit": 15.0,
+    "force_min": 0.0,
+    "force_max": 36.0
+  },
+  "position_controller": {
+    "kp": [
+      1.2,
+      1.2,
+      0.0
+    ],
+    "kd": [
+      1.8,
+      1.8,
+      0.0
+    ],
+    "max_tilt_deg": 18.0
+  }
+}

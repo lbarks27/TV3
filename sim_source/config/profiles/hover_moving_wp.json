@@ -1,0 +1,111 @@
+{
+  "name": "hover_moving_wp",
+  "vehicle": "vehicles/tvc_ring3.json",
+  "motion": "hover",
+  "waypoint_advance": "lerp",
+  "waypoints": [
+    {
+      "position_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "t": 0.0
+    },
+    {
+      "position_m": [
+        0.0,
+        0.0,
+        8.0
+      ],
+      "t": 4.0
+    },
+    {
+      "position_m": [
+        0.0,
+        0.0,
+        8.0
+      ],
+      "t": 5.5
+    },
+    {
+      "position_m": [
+        6.0,
+        0.0,
+        8.0
+      ],
+      "t": 12.0
+    },
+    {
+      "position_m": [
+        6.0,
+        6.0,
+        8.0
+      ],
+      "t": 18.5
+    },
+    {
+      "position_m": [
+        0.0,
+        6.0,
+        8.0
+      ],
+      "t": 25.0
+    },
+    {
+      "position_m": [
+        0.0,
+        0.0,
+        8.0
+      ],
+      "t": 31.5
+    },
+    {
+      "position_m": [
+        0.0,
+        0.0,
+        8.0
+      ],
+      "t": 34.0
+    }
+  ],
+  "notes": "Climb, then chase a continuously moving (lerp) box path at 8 m with velocity feedforward.",
+  "flight_test": {
+    "dt": 0.01,
+    "duration": 36.0,
+    "force_target": 9.81,
+    "force_weight": 0.25,
+    "thrust_per_mount": 12.0,
+    "initial_euler_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_position_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "altitude_controller": {
+    "kp": 12.0,
+    "ki": 0.2,
+    "kd": 10.5,
+    "integral_limit": 3.0,
+    "force_min": 0.0,
+    "force_max": 36.0
+  },
+  "position_controller": {
+    "kp": [
+      1.2,
+      1.2,
+      0.0
+    ],
+    "kd": [
+      1.8,
+      1.8,
+      0.0
+    ],
+    "max_tilt_deg": 18.0
+  }
+}
